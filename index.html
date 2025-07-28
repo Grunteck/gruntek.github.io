@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebStudio | Сайты под ключ</title>
+    <title>WebStudio | Премиальные сайты под ключ</title>
     <style>
-        /* Современные стили */
         :root {
             --primary: #4361ee;
+            --primary-light: #4895ef;
             --dark: #1e1e24;
             --light: #f8f9fa;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
         }
         
         body {
@@ -21,13 +22,18 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
         
         /* Навигация */
         header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
         
         nav {
@@ -39,56 +45,187 @@
         }
         
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: 800;
             text-decoration: none;
             color: var(--dark);
+            letter-spacing: -0.5px;
         }
         
         .logo span {
             color: var(--primary);
+            position: relative;
+        }
+        
+        .logo span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: currentColor;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover span::after {
+            transform: scaleX(1);
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
         
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s;
+            position: relative;
+            font-size: 1.1rem;
         }
         
-        .nav-links a:hover {
-            color: var(--primary);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
         }
         
-        /* Активная вкладка */
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
         .nav-links a.active {
             color: var(--primary);
-            font-weight: 600;
         }
         
+        .cta-button {
+            background: var(--gradient);
+            color: white !important;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        /* Герой-секция */
         .hero {
-            background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            background: var(--gradient);
             color: white;
-            padding: 5rem 2rem;
-            border-radius: 0 0 30px 30px;
+            padding: 12rem 2rem 8rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            pointer-events: none;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero h1 span {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: rgba(255,255,255,0.3);
+            z-index: -1;
+            transform: skewY(-2deg);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
+        /* Карточки */
         .features {
             display: flex;
             justify-content: center;
             gap: 2rem;
-            padding: 3rem 2rem;
+            padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
             flex-wrap: wrap;
@@ -96,116 +233,160 @@
         
         .feature-card {
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            padding: 2rem;
-            width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 2.5rem 2rem;
+            width: 320px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card p {
+            color: #666;
+            font-size: 1.05rem;
         }
         
         .feature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
         }
         
-        .btn {
-            display: inline-block;
-            background: white;
-            color: var(--primary);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: all 0.3s;
-        }
-        
-        .btn:hover {
-            background: rgba(255,255,255,0.9);
-        }
-
-        /* Стили подвала */
+        /* Подвал */
         .site-footer {
-            background: #f5f5f5;
-            padding: 3rem 0;
+            background: #111;
+            color: #fff;
+            padding: 5rem 0 3rem;
             margin-top: auto;
-            border-top: 1px solid #e0e0e0;
         }
-
+        
         .site-footer .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
+        
         .footer-content {
             text-align: center;
         }
-
+        
         .site-footer h3 {
-            color: #333;
+            color: #fff;
             margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            font-size: 2rem;
+            font-weight: 700;
         }
-
+        
         .footer-contacts h4 {
-            color: #4361ee;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
         }
-
+        
         .phone-numbers {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .phone-numbers a {
-            color: #333;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-
-        .phone-numbers a:hover {
-            color: #4361ee;
-        }
-
-        .address p {
-            color: #666;
-            font-size: 1rem;
+            gap: 0.8rem;
             margin-bottom: 2rem;
         }
-
-        .copyright {
-            color: #999;
-            font-size: 0.9rem;
-            margin-top: 2rem;
+        
+        .phone-numbers a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: inline-block;
         }
-
+        
+        .phone-numbers a:hover {
+            color: var(--primary-light);
+            transform: translateX(5px);
+        }
+        
+        .address p {
+            color: #aaa;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .copyright {
+            color: #777;
+            font-size: 0.95rem;
+            margin-top: 3rem;
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+        }
+        
+        /* Анимации */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
         /* Адаптивность */
         @media (max-width: 768px) {
-            .site-footer {
-                padding: 2rem 0;
-            }
-            
-            .phone-numbers {
-                flex-direction: column;
+            header {
+                padding: 1rem;
             }
             
             .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
+                gap: 1.2rem;
+            }
+            
+            .hero {
+                padding: 8rem 1.5rem 6rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .features {
+                padding: 4rem 1.5rem;
+            }
+            
+            .feature-card {
+                width: 100%;
+                max-width: 350px;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Красивая шапка -->
+    <!-- Шапка -->
     <header>
         <nav>
             <a href="index.html" class="logo">Web<span>Studio</span></a>
@@ -218,38 +399,38 @@
         </nav>
     </header>
 
-    <!-- Стильный герой-баннер -->
+    <!-- Герой-секция -->
     <section class="hero">
         <div class="container">
             <h1>Профессиональные сайты <span>под ключ</span></h1>
-            <p class="subtitle">От идеи до запуска за 7 дней с гарантией результата</p>
+            <p class="subtitle">Создаем цифровые решения, которые выделяют вас среди конкурентов и привлекают клиентов</p>
             <a href="#contact" class="btn">Бесплатная консультация <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
-    <!-- Карточки с hover-эффектом -->
+    <!-- Карточки -->
     <section class="features">
         <div class="feature-card">
-            <i class="fas fa-rocket fa-2x"></i>
+            <i class="fas fa-rocket"></i>
             <h3>Запуск за 7 дней</h3>
-            <p>Соблюдаем сроки или вернем 10% от суммы</p>
+            <p>Соблюдаем сроки или вернем 10% от суммы. Быстро, качественно, без задержек.</p>
         </div>
         
         <div class="feature-card">
-            <i class="fas fa-shield-alt fa-2x"></i>
+            <i class="fas fa-shield-alt"></i>
             <h3>Гарантия 1 год</h3>
-            <p>Исправим любые баги бесплатно</p>
+            <p>Бесплатное исправление любых технических проблем в течение года после сдачи.</p>
         </div>
         
         <div class="feature-card">
-            <i class="fas fa-chart-line fa-2x"></i>
+            <i class="fas fa-chart-line"></i>
             <h3>SEO-оптимизация</h3>
-            <p>Ваш сайт в ТОП-10 Google</p>
+            <p>Ваш сайт будет оптимизирован для поисковых систем с момента запуска.</p>
         </div>
     </section>
 
-    <!-- Подвал сайта -->
-    <footer class="site-footer">
+    <!-- Подвал -->
+    <footer class="site-footer" id="contact">
         <div class="container">
             <div class="footer-content">
                 <h3>WebStudio</h3>
@@ -267,5 +448,28 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Плавная прокрутка для якорей
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Анимация карточек при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 200 * index);
+            });
+        });
+    </script>
 </body>
 </html>
