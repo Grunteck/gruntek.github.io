@@ -3,24 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Создаём сайты под ключ</title>
-    <link rel="stylesheet" href="style.css">
+    <title>WebStudio | Сайты под ключ</title>
+    <style>
+        /* Современные стили */
+        :root {
+            --primary: #4361ee;
+            --dark: #1e1e24;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Навигация */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--dark);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Активная вкладка */
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            color: white;
+            padding: 5rem 2rem;
+            border-radius: 0 0 30px 30px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            padding: 2rem;
+            width: 300px;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: rgba(255,255,255,0.9);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Профессиональные сайты под ключ</h1>
-        <p class="description">Делаем стильные и быстрые сайты для бизнеса. От лендингов до интернет-магазинов.</p>
-        
-        <div class="contacts">
-            <h2>Свяжитесь с нами:</h2>
-            <ul>
-                <li>📞 Телефон: <a href="телефон:+79529024433">+7 (952) 902-44-33</a></li>
-                <li>📧 Email: <a href="braveespirit@gmail.com">braveespirit@gmail.com</a></li>
-                <li>📱 Telegram: <a href="https://t.me/gruntek">@gruntek</a></li>
-            </ul>
-        </div>
+    <!-- Красивая шапка -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Web<span>Studio</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Главная</a>
+                <a href="why.html">Почему мы?</a>
+                <a href="reviews.html">Отзывы</a>
+                <a href="#contact" class="cta-button">Заказать</a>
+            </div>
+        </nav>
+    </header>
 
-        <a href="https://t.me/gruntek" class="button">Заказать сайт</a>
-    </div>
+    <!-- Стильный герой-баннер -->
+    <section class="hero">
+        <div class="container">
+            <h1>Профессиональные сайты <span>под ключ</span></h1>
+            <p class="subtitle">От идеи до запуска за 7 дней с гарантией результата</p>
+            <a href="#contact" class="btn">Бесплатная консультация <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Карточки с hover-эффектом -->
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-rocket fa-2x"></i>
+            <h3>Запуск за 7 дней</h3>
+            <p>Соблюдаем сроки или вернем 10% от суммы</p>
+        </div>
+        
+        <div class="feature-card">
+            <i class="fas fa-shield-alt fa-2x"></i>
+            <h3>Гарантия 1 год</h3>
+            <p>Исправим любые баги бесплатно</p>
+        </div>
+        
+        <div class="feature-card">
+            <i class="fas fa-chart-line fa-2x"></i>
+            <h3>SEO-оптимизация</h3>
+            <p>Ваш сайт в ТОП-10 Google</p>
+        </div>
+    </section>
 </body>
 </html>
