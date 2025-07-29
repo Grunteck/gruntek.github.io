@@ -4,7 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Почему выбирают нас? | WebStudio</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Современные стили */
+        :root {
+            --primary: #4361ee;
+            --dark: #1e1e24;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Навигация */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--dark);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Активная вкладка */
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #3a0ca3;
+            transform: translateY(-2px);
+        }
+        
+        /* Герой-секция */
+        .hero {
+            background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Преимущества */
+        .advantages-section {
+            padding: 0 2rem 5rem;
+        }
+        
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .advantage-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .advantage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .advantage-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .advantage-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .advantage-card p {
+            color: #666;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #3a0ca3;
+            transform: translateY(-2px);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -19,18 +183,52 @@
         </nav>
     </header>
 
-    <main class="why-page">
-        <section class="advantages">
-            <h1>Наши преимущества</h1>
+    <section class="hero">
+        <div class="container">
+            <h1>Почему выбирают нас?</h1>
+            <p class="subtitle">Мы сочетаем профессиональный подход с индивидуальным вниманием к каждому клиенту</p>
+            <a href="#contact" class="btn">Бесплатная консультация <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <section class="advantages-section">
+        <div class="advantages-grid">
             <div class="advantage-card">
+                <i class="fas fa-calendar-check"></i>
                 <h3>Опыт 5+ лет</h3>
-                <p>Более 150 успешных проектов</p>
+                <p>Более 150 успешных проектов для клиентов из разных сфер бизнеса</p>
             </div>
+            
             <div class="advantage-card">
+                <i class="fas fa-shield-alt"></i>
                 <h3>Гарантия 1 год</h3>
-                <p>Бесплатное исправление багов</p>
+                <p>Бесплатное исправление багов и техническая поддержка в течение года</p>
             </div>
-        </section>
-    </main>
+            
+            <div class="advantage-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Быстрый запуск</h3>
+                <p>Средний срок разработки проекта - 7-14 дней с момента утверждения ТЗ</p>
+            </div>
+            
+            <div class="advantage-card">
+                <i class="fas fa-search-dollar"></i>
+                <h3>SEO-оптимизация</h3>
+                <p>Все сайты оптимизированы для поисковых систем с момента запуска</p>
+            </div>
+            
+            <div class="advantage-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Адаптивный дизайн</h3>
+                <p>Идеальное отображение на всех устройствах - от смартфонов до десктопов</p>
+            </div>
+            
+            <div class="advantage-card">
+                <i class="fas fa-headset"></i>
+                <h3>Поддержка 24/7</h3>
+                <p>Круглосуточная техническая поддержка для всех наших клиентов</p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
