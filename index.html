@@ -29,7 +29,7 @@
         header {
             background: rgba(255,255,255,0.95);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            padding: 1.5rem 2rem;
+            padding: 1rem;
             position: fixed;
             width: 100%;
             z-index: 1000;
@@ -45,7 +45,7 @@
         }
         
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             text-decoration: none;
             color: var(--dark);
@@ -54,125 +54,82 @@
         
         .logo span {
             color: var(--primary);
-            position: relative;
-        }
-        
-        .logo span::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: currentColor;
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        
-        .logo:hover span::after {
-            transform: scaleX(1);
         }
         
         .nav-links {
+            display: none;
+            flex-direction: column;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-links.active {
             display: flex;
-            gap: 2.5rem;
         }
         
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
             font-weight: 600;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
             transition: all 0.3s;
-            position: relative;
-            font-size: 1.1rem;
         }
         
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
         }
         
         .nav-links a.active {
             color: var(--primary);
+            background: rgba(67, 97, 238, 0.1);
         }
         
         .cta-button {
             background: var(--gradient);
             color: white !important;
-            padding: 0.7rem 1.8rem;
+            padding: 0.7rem 1.5rem;
             border-radius: 50px;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
         }
         
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
         }
         
         /* Герой-секция */
         .hero {
             background: var(--gradient);
             color: white;
-            padding: 12rem 2rem 8rem;
+            padding: 7rem 1rem 4rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            margin-top: 80px;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-            background-size: 100% auto;
-            background-repeat: no-repeat;
-            background-position: bottom;
-            pointer-events: none;
+            margin-top: 60px;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .hero h1 span {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .hero h1 span::after {
-            content: '';
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            width: 100%;
-            height: 12px;
-            background: rgba(255,255,255,0.3);
-            z-index: -1;
-            transform: skewY(-2deg);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
         }
         
         .subtitle {
-            font-size: 1.4rem;
-            max-width: 700px;
-            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            max-width: 100%;
+            margin: 0 auto 2rem;
             opacity: 0.9;
         }
         
@@ -182,65 +139,30 @@
             gap: 10px;
             background: white;
             color: var(--primary);
-            padding: 1rem 2.2rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             margin-top: 1rem;
-            transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.5s;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        
-        .btn:hover::before {
-            left: 100%;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
         
         /* Карточки */
         .features {
+            padding: 2rem 1rem;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            padding: 6rem 2rem;
+            flex-direction: column;
+            gap: 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
-            flex-wrap: wrap;
         }
         
         .feature-card {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            padding: 2.5rem 2rem;
-            width: 320px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 1.5rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
             border: 1px solid rgba(0,0,0,0.03);
         }
         
@@ -255,8 +177,8 @@
         }
         
         .feature-card i {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 1rem;
             background: var(--gradient);
             -webkit-background-clip: text;
             background-clip: text;
@@ -264,32 +186,21 @@
         }
         
         .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
         }
         
         .feature-card p {
             color: #666;
-            font-size: 1.05rem;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            font-size: 1rem;
         }
         
         /* Подвал */
         .site-footer {
             background: #111;
             color: #fff;
-            padding: 5rem 0 3rem;
+            padding: 3rem 1rem;
             margin-top: auto;
-        }
-        
-        .site-footer .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
         }
         
         .footer-content {
@@ -299,15 +210,7 @@
         .site-footer h3 {
             color: #fff;
             margin-bottom: 1.5rem;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        
-        .footer-contacts h4 {
-            color: var(--primary-light);
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.5rem;
         }
         
         .phone-numbers {
@@ -320,65 +223,87 @@
         .phone-numbers a {
             color: #fff;
             text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-        
-        .phone-numbers a:hover {
-            color: var(--primary-light);
-            transform: translateX(5px);
-        }
-        
-        .address p {
-            color: #aaa;
             font-size: 1.1rem;
-            margin-bottom: 3rem;
         }
         
         .copyright {
             color: #777;
-            font-size: 0.95rem;
-            margin-top: 3rem;
+            font-size: 0.9rem;
+            margin-top: 2rem;
             border-top: 1px solid #333;
-            padding-top: 2rem;
+            padding-top: 1.5rem;
         }
         
-        /* Анимации */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        /* Адаптивность */
-        @media (max-width: 768px) {
+        /* Десктоп версия */
+        @media (min-width: 768px) {
             header {
-                padding: 1rem;
+                padding: 1.5rem 2rem;
+            }
+            
+            .menu-toggle {
+                display: none;
             }
             
             .nav-links {
-                gap: 1.2rem;
+                display: flex;
+                flex-direction: row;
+                position: static;
+                background: transparent;
+                box-shadow: none;
+                padding: 0;
+                width: auto;
+                gap: 2rem;
+            }
+            
+            .nav-links a {
+                padding: 0;
+                background: none !important;
+            }
+            
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: var(--primary);
+                transition: width 0.3s;
+            }
+            
+            .nav-links a:hover::after {
+                width: 100%;
+            }
+            
+            .cta-button {
+                margin-top: 0;
             }
             
             .hero {
-                padding: 8rem 1.5rem 6rem;
+                padding: 12rem 2rem 8rem;
+                margin-top: 80px;
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
             
             .subtitle {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
+                max-width: 700px;
             }
             
             .features {
-                padding: 4rem 1.5rem;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 4rem 2rem;
+                gap: 2rem;
             }
             
             .feature-card {
-                width: 100%;
-                max-width: 350px;
+                width: 300px;
+                padding: 2rem;
             }
         }
     </style>
@@ -390,7 +315,10 @@
     <header>
         <nav>
             <a href="index.html" class="logo">Web<span>Studio</span></a>
-            <div class="nav-links">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
                 <a href="index.html" class="active">Главная</a>
                 <a href="why.html">Почему мы?</a>
                 <a href="reviews.html">Отзывы</a>
@@ -435,7 +363,6 @@
             <div class="footer-content">
                 <h3>WebStudio</h3>
                 <div class="footer-contacts">
-                    <h4>Связаться с нами:</h4>
                     <div class="phone-numbers">
                         <a href="tel:+79529024433">+7 (952) 902-44-33</a>
                         <a href="tel:+79069941608">+7 (906) 994-16-08</a>
@@ -450,24 +377,30 @@
     </footer>
 
     <script>
+        // Мобильное меню
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
+        
         // Плавная прокрутка для якорей
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Анимация карточек при загрузке
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.feature-card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 200 * index);
+                if(this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
