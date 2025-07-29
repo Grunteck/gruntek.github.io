@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Почему выбирают нас? | WebStudio</title>
     <style>
-        /* Современные стили */
         :root {
             --primary: #4361ee;
             --dark: #1e1e24;
@@ -25,6 +24,7 @@
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             padding: 1rem 2rem;
+            position: relative;
         }
         
         nav {
@@ -49,6 +49,7 @@
         .nav-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
         
         .nav-links a {
@@ -62,7 +63,6 @@
             color: var(--primary);
         }
         
-        /* Активная вкладка */
         .nav-links a.active {
             color: var(--primary);
             font-weight: 600;
@@ -70,16 +70,64 @@
         
         .cta-button {
             background: var(--primary);
-            color: white;
+            color: white !important;
             padding: 0.6rem 1.2rem;
             border-radius: 50px;
             font-weight: 600;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
         
         .cta-button:hover {
             background: #3a0ca3;
             transform: translateY(-2px);
+        }
+        
+        /* Контакты */
+        .contact-dropdown {
+            display: none;
+            position: absolute;
+            right: 2rem;
+            top: 80px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            width: 300px;
+            z-index: 100;
+        }
+        
+        .contact-dropdown.show {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        .contact-dropdown h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .contact-info {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-info i {
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         /* Герой-секция */
@@ -152,8 +200,8 @@
         
         .btn {
             display: inline-block;
-            background: var(--primary);
-            color: white;
+            background: white;
+            color: var(--primary);
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
@@ -163,8 +211,7 @@
         }
         
         .btn:hover {
-            background: #3a0ca3;
-            transform: translateY(-2px);
+            background: rgba(255,255,255,0.9);
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -178,9 +225,20 @@
                 <a href="index.html">Главная</a>
                 <a href="why.html" class="active">Почему мы?</a>
                 <a href="reviews.html">Отзывы</a>
-                <a href="#contact" class="cta-button">Заказать</a>
+                <button class="cta-button" id="orderButton">Заказать</button>
             </div>
         </nav>
+        
+        <div class="contact-dropdown" id="contactDropdown">
+            <h3>Свяжитесь с нами</h3>
+            <div class="contact-info">
+                <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                <p><i class="fas fa-envelope"></i> info@webstudio.ru</p>
+                <p><i class="fas fa-clock"></i> Пн-Пт: 9:00 - 18:00</p>
+            </div>
+            <p>Или оставьте заявку, и мы вам перезвоним в течение 15 минут</p>
+            <a href="#contact-form" class="btn">Оставить заявку</a>
+        </div>
     </header>
 
     <section class="hero">
@@ -230,5 +288,20 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.getElementById('orderButton').addEventListener('click', function() {
+            const dropdown = document.getElementById('contactDropdown');
+            dropdown.classList.toggle('show');
+            
+            // Закрытие при клике вне области
+            document.addEventListener('click', function closeDropdown(e) {
+                if (!dropdown.contains(e.target) {
+                    dropdown.classList.remove('show');
+                    document.removeEventListener('click', closeDropdown);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
